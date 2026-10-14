@@ -43,4 +43,7 @@ jobs:
           name: IPTV-Ultimate-debug-APK
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
