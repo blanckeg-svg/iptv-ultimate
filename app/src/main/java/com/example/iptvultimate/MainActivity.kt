@@ -180,7 +180,7 @@ private fun ConnectScreen(onConnect: (XtreamAccount) -> Unit) {
                         Button(onClick = { CloudSyncScheduler.disable(context); prefs.edit().remove("webdav_url").remove("webdav_user").remove("webdav_pass").apply(); backupText = "Synchronisation désactivée." }, modifier = Modifier.fillMaxWidth()) { Text("Désactiver la synchronisation") }
                     }
                 }
-                item { Button(onClick = { backupText = JSONObject().put("server", a.server).put("username", a.username).put("profile", profile).put("theme", theme).put("favorites", JSONArray(prefs.getStringSet("favorites", emptySet())?.toList() ?: emptyList())).toString(2) }) { Text("Préparer une sauvegarde JSON manuelle") } }
+                item { Button(onClick = { backupText = JSONObject().put("server", a.server).put("username", a.username).put("profile", profile).put("theme", theme).put("favorites", JSONArray(prefs.getStringSet("favorites", emptySet<String>())?.toList() ?: emptyList())).toString(2) }) { Text("Préparer une sauvegarde JSON manuelle") } }
                 item { if (backupText.isNotBlank()) OutlinedTextField(backupText, { backupText = it }, label = { Text("État / sauvegarde JSON (mot de passe Xtream exclu)") }, modifier = Modifier.fillMaxWidth(), minLines = 3) }
                 item { Text("La synchronisation cloud nécessite un compte WebDAV/Nextcloud personnel. Utilise HTTPS et un mot de passe d’application.", color = Color.Gray, fontSize = 12.sp) }
                 item { Divider(color = Color.DarkGray) }
